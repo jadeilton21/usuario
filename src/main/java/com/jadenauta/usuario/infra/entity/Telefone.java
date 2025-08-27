@@ -2,10 +2,7 @@ package com.jadenauta.usuario.infra.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
@@ -13,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "telefone")
+@Builder
 public class Telefone {
 
     @Id
