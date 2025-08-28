@@ -49,7 +49,7 @@ public class UsuarioController {
         return ResponseEntity.ok().build();
     }
 
-
+    @PutMapping
     public ResponseEntity<UsuarioDTO> atualizaDadosUsuario(@RequestBody UsuarioDTO dto,
                                                            @RequestHeader("Authorization") String token) {
 
