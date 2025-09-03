@@ -129,6 +129,8 @@ public class UsuarioService {
         return usuarioConverter.paraEnderecoDTO(enderecoEntity);
     }
 
+
+
     public TelefoneDTO cadastraTelefone(String token, TelefoneDTO dto) {
         String email = jwtUtil.extraiEmailDoToken(token.substring(7));
         Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow(() ->
