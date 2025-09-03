@@ -33,7 +33,8 @@ public class Endereco {
     private String cep;
     @Column(name ="uf", length = 50)
     private String uf;
-
+    @Column(name = "usuario_id")
+    private Long usuario_id;
 
 
 
