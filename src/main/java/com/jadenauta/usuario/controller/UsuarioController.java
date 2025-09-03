@@ -2,8 +2,9 @@ package com.jadenauta.usuario.controller;
 
 
 import com.jadenauta.usuario.business.UsuarioService;
+import com.jadenauta.usuario.business.dtos.EnderecoDTO;
+import com.jadenauta.usuario.business.dtos.TelefoneDTO;
 import com.jadenauta.usuario.business.dtos.UsuarioDTO;
-import com.jadenauta.usuario.infra.entity.Usuario;
 import com.jadenauta.usuario.infra.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +39,7 @@ public class UsuarioController {
 
     }
     @GetMapping
-    public ResponseEntity<Usuario> buscarUsuarioPorEmail(@RequestParam("email") String email) {
+    public ResponseEntity<UsuarioDTO> buscarUsuarioPorEmail(@RequestParam("email") String email) {
 
         return ResponseEntity.ok(usuarioService.buscarUsuarioPorEmail(email));
 
@@ -55,6 +56,36 @@ public class UsuarioController {
 
         return ResponseEntity.ok(usuarioService.atualizaDadosUsuari(token, dto));
     }
+    @PutMapping("/endereco")
+    public ResponseEntity<EnderecoDTO> atualizaEndereco(@RequestBody EnderecoDTO dto,
+                                                        @RequestParam("id") Long id) {
+
+        return ResponseEntity.ok(usuarioService.atualizaEndereco(id, dto));
 
 
+
+    }
+    @PutMapping("/telefone")
+    public ResponseEntity<TelefoneDTO> atualizaTelefone(@RequestBody TelefoneDTO dto,
+                                                        @RequestParam("id") Long id) {
+
+        return ResponseEntity.ok(usuarioService.atualizaTelefone(id, dto));
+
+
+
+    }
+
+    @PostMapping("/endereco")
+    public ResponseEntity<EnderecoDTO> cadastroEndereco(@RequestBody EnderecoDTO dto, @RequestHeader ("Authorization") String token) {
+        return ResponseEntity.ok(usuarioService.cadastraEndereco(token,dto));
+
+    }
+
+    @PostMapping("/telefone")
+    public ResponseEntity<TelefoneDTO> cadastroTelefone(@RequestBody TelefoneDTO dto, @RequestHeader("Authorization") String token) {
+
+
+
+        return ResponseEntity.ok(usuarioService.cadastraTelefone(token,dto));
+    }
 }
